@@ -10,7 +10,8 @@
         "homepage": "https://github.com/j92"
     }],
     "require": {
-        "php": ">=5.5"
+        "php": ">=5.5",
+        "mtdowling/cron-expression": "^1.1"
     },
     "autoload": {
         "psr-4": { "j92\\Scheduler\\": "src/" }
