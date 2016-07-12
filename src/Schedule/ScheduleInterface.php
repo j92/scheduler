@@ -10,4 +10,9 @@ interface ScheduleInterface
      * @return EventInterface[]
      */
     public function getEvents();
+
+    /**
+     * Run the scheduled events
+     */
+    public function run();
 }

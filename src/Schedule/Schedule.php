@@ -28,4 +28,16 @@ class Schedule implements ScheduleInterface
     {
         return $this->eventProvider->getEvents();
     }
+
+    /**
+     * Run the schedule events
+     */
+    public function run()
+    {
+        foreach($this->eventProvider->getEvents() as $event) {
+            if ($event->shouldRun()) {
+                $event->run();
+            }
+        }
+    }
 }

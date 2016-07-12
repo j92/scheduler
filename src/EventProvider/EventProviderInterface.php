@@ -8,7 +8,7 @@ interface EventProviderInterface
 {
     /**
      * Provide a list of Events
-     * @return EventInterface
+     * @return EventInterface[]
      */
     public function getEvents();
 }
