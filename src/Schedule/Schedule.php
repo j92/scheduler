@@ -2,25 +2,30 @@
 
 namespace j92\Scheduler\Schedule;
 
-use Scheduler\Event\EventInterface;
-use Scheduler\EventProvider\EventProviderInterface;
+use j92\Scheduler\Event\EventInterface;
+use j92\Scheduler\EventProvider\EventProviderInterface;
 
 class Schedule implements ScheduleInterface
 {
     /**
-     * @var EventProviderInterface[]
+     * @var EventProviderInterface
      */
-    private $eventProviders = [];
+    private $eventProvider;
+
+    /**
+     * Schedule constructor.
+     * @param EventProviderInterface $eventProvider
+     */
+    public function __construct(EventProviderInterface $eventProvider)
+    {
+        $this->eventProvider = $eventProvider;
+    }
     
     /**
      * @return EventInterface[]
      */
     public function getEvents()
     {
-        $events = [];
-        foreach ($this->eventProviders as $eventProvider) {
-            $events[] = $eventProvider->provide();
-        } 
-        return $events;
+        return $this->eventProvider->getEvents();
     }
 }

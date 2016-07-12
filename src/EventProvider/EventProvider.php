@@ -2,21 +2,29 @@
 
 namespace j92\Scheduler\EventProvider;
 
-use Scheduler\Event\EventInterface;
-use Scheduler\Event\TimeLogCommandEvent;
-use Scheduler\Event\TimeLogTwiceEvent;
+use j92\Scheduler\Event\EventInterface;
 
 class EventProvider implements EventProviderInterface
 {
     /**
-     * Provide a list of Events
-     * @return EventInterface[]
+     * @var EventInterface[]
      */
-    public function provide()
+    private $events = [];
+
+    /**
+     * EventProvider constructor.
+     * @param EventInterface[] $events
+     */
+    public function __construct(array $events)
     {
-        return [
-            new TimeLogCommandEvent(),
-            new TimeLogTwiceEvent()
-        ];
+        $this->events = $events;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getEvents()
+    {
+        return $this->events;
     }
 }
