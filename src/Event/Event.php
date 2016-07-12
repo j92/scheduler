@@ -12,12 +12,21 @@ class Event implements EventInterface
     private $expression;
 
     /**
+     * Event constructor.
+     * @param CronExpression $expression
+     */
+    public function __construct(CronExpression $expression)
+    {
+        $this->expression = $expression;
+    }
+
+    /**
      * When should the event run
      * @return bool
      */
     public function shouldRun()
     {
-        return $this->getExpression()->isDue();
+        return $this->expression->isDue();
     }
 
     /**
@@ -33,27 +42,9 @@ class Event implements EventInterface
      * Returns the exact time the event show run
      * @return CronExpression
      */
-    public function shouldRunWhen()
+    public function getNextRunDate()
     {
-        return $this->getExpression()->getNextRunDate();
+        return $this->expression->getNextRunDate();
     }
 
-    /**
-     * @return CronExpression
-     */
-    protected function getExpression()
-    {
-        if (empty($this->expression)) {
-            throw new \InvalidArgumentException('Missing expression');
-        }
-        return $this->expression;
-    }
-
-    protected function setExpression($expression)
-    {
-        if (!CronExpression::isValidExpression($expression)) {
-            throw new \InvalidArgumentException('Invalid expression');
-        }
-        $this->expression = CronExpression::factory($expression);
-    }
 }

@@ -10,7 +10,7 @@ interface EventInterface
      * Returns the exact time the event show run
      * @return CronExpression
      */
-    public function shouldRunWhen();
+    public function getNextRunDate();
 
      /**
       * Should we run the event now
