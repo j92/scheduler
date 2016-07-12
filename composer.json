@@ -5,7 +5,7 @@
     "keywords": [ "cron", "schedule"],
     "license": "MIT",
     "authors": [{
-        "name": "Joost van Driel"
+        "name": "Joost van Driel",
         "email": "joostvdriel+github@gmail.com",
         "homepage": "https://github.com/j92"
     }],
