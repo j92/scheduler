@@ -2,7 +2,7 @@
 
 namespace j92\Scheduler\Schedule;
 
-use Scheduler\Event\EventInterface;
+use j92\Scheduler\Event\EventInterface;
 
 interface ScheduleInterface
 {
